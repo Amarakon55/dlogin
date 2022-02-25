@@ -1,0 +1,6 @@
+#!/bin/sh
+
+cmd="$(printf "slock\nloginctl suspend\nloginctl hibernate\npkill X\nloginctl poweroff\nloginctl reboot" | dmenu -p "power")"
+
+{ [ $(printf $cmd | cut -d ' ' -f1) = "loginctl" ] && doas-askpass $cmd; } ||
+{ $cmd; }
