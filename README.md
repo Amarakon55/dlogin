@@ -1,44 +1,70 @@
-# DLogin – Dmenu Login
+DLogin – Dmenu Login
+================
 
-DLogin is a simple program to manage login via Dmenu.
-The usage is very simple:
-* `$ dlogin` – run the program
+## Contents
+
+-   [Usage](#usage)
+-   [Dependencies](#dependencies)
+-   [Dependencies](#dependencies-1)
+-   [Installation](#installation)
+    -   [Universal](#universal)
+    -   [Gentoo](#gentoo)
+-   [Uninstallation](#uninstallation)
+    -   [Universal](#universal-1)
+    -   [Gentoo](#gentoo-1)
+
+DLogin is a simple program to manage login via Dmenu. It supports on any
+init system and it works regardless if you have polkit installed.
+
+## Usage
+
+``` sh
+`# user` dlogin # run the program
+```
 
 ## Dependencies
-1. dmenu
-1. elogind
 
-## (Un)Installation
+1.  Dmenu
+2.  [Doas AskPass](https://github.com/amarakon/doas_askpass) (if you do
+    not have polkit installed)
+
+## Dependencies
+
+1.  Dmenu
+2.  Xclip (if you want to use the *copy* or *copy file* features.)
+
+## Installation
+
 ### Universal
-#### Installation
-##### Latest Git Master (Bleeding Edge)
-1. Git clone the repository.
-* `$ git clone https://github.com/Amarakon55/dlogin`
-2. Change working directory to *dlogin*.
-* `$ cd dlogin`
-3. Install DLogin using the Makefile
-* `# make install`
-#### Uninstallation
-##### Latest Git Master (Bleeding Edge)
-1. Change working directory to *dlogin*.
-* `$ cd dlogin`
-2. Uninstall DLogin using the Makefile
-* `# make uninstall`
+
+``` sh
+`# user` git clone https://github.com/amarakon/dlogin
+`# user` cd dlogin
+`# root` make install
+```
 
 ### Gentoo
-#### Installation
-##### Latest Git Master (Bleeding Edge)
-1. Add my personal [Gentoo overlay](https://github.com/Amarakon55/amarlay) using [eselect-repository](https://packages.gentoo.org/packages/app-eselect/eselect-repository)
-* `# eselect repository add amarlay git https://github.com/Amarakon55/amarlay`
-2. Sync my personal [Gentoo overlay](https://github.com/Amarakon55/amarlay) using `emerge`
-* `# emerge --sync amarlay`
-3. Emerge the DLogin package
-* `# emerge x11-misc/dlogin` or `# emerge dlogin`
-#### Uninstallation
-##### Latest Git Master (Bleeding Edge)
-1. Unmerge the DLogin package
-* `# emerge -c x11-misc/dlogin` or `# emerge -c dlogin`
-2. (Optional) Remove my overlay
-* `# eselect-repository remove -f amarlay`
-3. (Optional) Sync using `emerge`
-* `# emerge --sync`
+
+``` sh
+`# root` eselect repository add amarlay git https://github.com/amarakon/amarlay
+`# root` emerge --sync amarlay
+`# root` emerge x11-misc/dlogin
+```
+
+## Uninstallation
+
+### Universal
+
+``` sh
+`# user` cd dlogin
+`# root` make uninstall
+```
+
+### Gentoo
+
+``` sh
+`# root` emerge -c x11-misc/dlogin
+# Remove my overlay (optional)
+`# root` eselect-repository remove -f amarlay
+`# root` emerge --sync
+```
