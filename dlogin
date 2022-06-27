@@ -1,6 +1,6 @@
 #!/bin/sh
 
-init="$(readlink /sbin/init)"
+init="`readlink /sbin/init`"
 
 { [ "$init" = "/lib/systemd/systemd" ] && logind="systemctl"; } ||
 { logind="loginctl"; }
@@ -8,7 +8,7 @@ init="$(readlink /sbin/init)"
 cmd="$(printf "slock\n$logind suspend\n$logind hibernate\npkill X\n$logind poweroff\n$logind reboot" | dmenu -p "power")"
 
 if [ ! -f "/etc/pam.d/polkit-1" ]; then
-    if [ $(printf $cmd | cut -d ' ' -f1) = "$logind" ]; then
+    if [ `printf $cmd | cut -d ' ' -f1` = "$logind" ]; then
 	doas_askpass $cmd
     else
 	$cmd
