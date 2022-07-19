@@ -1,9 +1,9 @@
 ---
-title: DLogin – Dmenu Login
+title: Dlogin – dmenu Login
 output: amaryaml::github
 ---
 
-DLogin is a simple program to manage login via Dmenu.
+Dlogin is a simple program to manage login via dmenu.
 It supports on any init system and it works regardless if you have polkit installed.
 
 # Usage
@@ -14,13 +14,13 @@ It supports on any init system and it works regardless if you have polkit instal
 
 # Dependencies
 
-#. Dmenu
-#. [Doas AskPass](https://github.com/amarakon/doas_askpass) (if you do not have polkit installed)
+#. dmenu
+#. [doas_askpass](https://github.com/amarakon/doas_askpass) (if you do not have polkit installed)
 
 # Dependencies
 
-#. Dmenu
-#. Xclip (if you want to use the *copy* or *copy file* features.)
+#. dmenu
+#. xclip (if you want to use the *copy* or *copy file* features.)
 
 # Installation
 

@@ -1,4 +1,4 @@
-DLogin – Dmenu Login
+Dlogin – dmenu Login
 ================
 
 ## Contents
@@ -13,7 +13,7 @@ DLogin – Dmenu Login
     -   [Universal](#universal-1)
     -   [Gentoo](#gentoo-1)
 
-DLogin is a simple program to manage login via Dmenu. It supports on any
+Dlogin is a simple program to manage login via dmenu. It supports on any
 init system and it works regardless if you have polkit installed.
 
 ## Usage
@@ -24,14 +24,14 @@ init system and it works regardless if you have polkit installed.
 
 ## Dependencies
 
-1.  Dmenu
-2.  [Doas AskPass](https://github.com/amarakon/doas_askpass) (if you do
+1.  dmenu
+2.  [doas\_askpass](https://github.com/amarakon/doas_askpass) (if you do
     not have polkit installed)
 
 ## Dependencies
 
-1.  Dmenu
-2.  Xclip (if you want to use the *copy* or *copy file* features.)
+1.  dmenu
+2.  xclip (if you want to use the *copy* or *copy file* features.)
 
 ## Installation
 
