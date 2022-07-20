@@ -1,8 +1,8 @@
 #!/bin/sh
 
 init="$(readlink /sbin/init)"
-{ [ "$init" = "/lib/systemd/systemd" ] && logind="systemctl"; } ||
-{ logind="loginctl"; }
+if [ "$init" = "/lib/systemd/systemd" ]; then logind="systemctl"
+else logind="loginctl"; fi
 
 cmd="$(printf "Lock\nSuspend\nHibernate\nKill X\nPower off\nReboot" | dmenu -i -p "Dlogin" | sed 's/[A-Z]/\L&/' | tr -d " ")"
 case "$cmd" in
