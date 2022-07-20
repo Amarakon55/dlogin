@@ -1,10 +1,10 @@
 #!/bin/sh
 
-init="`readlink /sbin/init`"
+init="$(readlink /sbin/init)"
 { [ "$init" = "/lib/systemd/systemd" ] && logind="systemctl"; } ||
 { logind="loginctl"; }
 
-cmd="`printf "Lock\nSuspend\nHibernate\nKill X\nPower off\nReboot" | dmenu -i -p "Dlogin" | sed 's/[A-Z]/\L&/' | tr -d " "`"
+cmd="$(printf "Lock\nSuspend\nHibernate\nKill X\nPower off\nReboot" | dmenu -i -p "Dlogin" | sed 's/[A-Z]/\L&/' | tr -d " ")"
 case "$cmd" in
     lock)	cmd="slock" ;;
     killX)	cmd="pkill X" ;;
