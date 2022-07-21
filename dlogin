@@ -4,12 +4,6 @@ init="$(readlink /sbin/init)"
 if [ "$init" = "/lib/systemd/systemd" ]; then logind="systemctl"
 else logind="loginctl"; fi
 
-cmd="$(printf "Lock\nSuspend\nHibernate\nKill X\nPower off\nReboot" | dmenu -i -p "Dlogin" | sed 's/[A-Z]/\L&/' | tr -d " ")"
-case "$cmd" in
-    lock)	cmd="slock" ;;
-    killX)	cmd="pkill X" ;;
-    suspend | hibernate | poweroff | reboot)
-	cmd="$logind $cmd"
-	[ ! -f "/etc/pam.d/polkit-1" ] && cmd="doas_askpass $cmd" ;;
-esac
+cmd="$logind $(printf "Suspend\nHibernate\nPower off\nReboot" | dmenu -i -p "Dlogin" | sed 's/[A-Z]/\L&/' | tr -d " ")"
+[ ! -f "/etc/pam.d/polkit-1" ] && cmd="doas_askpass $cmd"
 $cmd
