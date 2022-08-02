@@ -4,6 +4,10 @@ init="$(readlink /sbin/init)"
 if [ "$init" = "/lib/systemd/systemd" ]; then logind="systemctl"
 else logind="loginctl"; fi
 
-cmd="$logind $(printf "Suspend\nHibernate\nPower off\nReboot" | dmenu -i -p "Dlogin" | sed 's/[A-Z]/\L&/' | tr -d " ")"
+cmd="$logind $(printf "Suspend\nHibernate\nPower off\nReboot" |
+	dmenu -i -p "Dlogin" | sed 's/[A-Z]/\L&/' | tr -d " ")"
 [ ! -f "/etc/pam.d/polkit-1" ] && cmd="doas_askpass $cmd"
-case "$(printf "$cmd" | rev | cut -d " " -f 1 | rev)" in suspend | hibernate | poweroff | reboot) $cmd ;; esac
+
+case "$(printf "$cmd" | rev | cut -d " " -f 1 | rev)" in
+	suspend | hibernate | poweroff | reboot) $cmd ;;
+esac
